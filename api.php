@@ -19,8 +19,8 @@ function getServers() {
            $entry = explode("|", $server);	
 	   $name = $entry[0];
 	   $address = $entry[1];
-           $href = "$.get('api.php',{control:'connect',address:'$address'});"; 
-	   $return .= "<h1><a onclick=$href >$name</a></h1>";
+           $href = "server.php?address=$address"; 
+	   $return .= "<h1><a href=$href >$name</a></h1>";
         }
 	return $return;
 }

@@ -22,16 +22,10 @@ $(document).ready(function(){
 	}, 3000);
 	
 	
-	//Mousetrap.bind(['p', 'space'], function() { $.get("api.php",{control:"p"}); });
-	//Mousetrap.bind('n', function() { $.get("api.php",{control:"connect"}); });
 });
 </script>
 </head>
 <body>
-<div id=controls>
-<a onclick=$.get("api.php",{control:"connect"});>Connect</a>
-<a onclick=$.get("api.php",{control:"n"});>Next</a>
-</div>
 <div id=content>
 </div>
 </body>
