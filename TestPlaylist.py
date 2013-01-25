@@ -1,12 +1,12 @@
 #!/usr/bin/python
 import unittest
-import playlist
-import daap
+from playlist import Playlist
+from daap import DAAPTrack
 
 class TestPlaylist(unittest.TestCase):
 
     def setUp(self):
-        self.shell = ItShell()
+        self.shell = Playlist()
 
 
 #    def test_shuffle(self):
@@ -15,7 +15,8 @@ class TestPlaylist(unittest.TestCase):
 #        self.assertRaises(TypeError, random.shuffle, (1,2,3))
 
     def test_do_url(self):
-        track 
+        track = DAAPTrack()
+        self.shell.do_url(track)
         self.assertTrue(element in self.seq)
 
  #   def test_sample(self):

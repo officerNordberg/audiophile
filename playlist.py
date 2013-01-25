@@ -1,9 +1,10 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 from daap import DAAPClient
 import sys
 
 class Playlist():
-
+    session = None
     def do_connect(self, spec):
         if len(spec) == 0:
             server = "localhost"
@@ -65,22 +66,24 @@ class Playlist():
         return map(self.do_url, tracks)
 
     def do_urls(self, track):
-        return "http://%s:%s/databases/%s/items/%s.%s?session-id=%s"%(track.database.session.connection.hostname, 
-                                                                      track.database.session.connection.port, 
-																	  track.database.id, 
-																	  track.id, 
-																	  track.type, 
-																	  track.database.session.sessionid)
-
-try:
-    import logging
-    logging.basicConfig(level=logging.DEBUG,
-            format='%(asctime)s %(levelname)s %(message)s')
-    # run the shell
-    shell = ItShell()
-    shell.do_connect(sys.argv[1])
-    shell.do_playlist(sys.argv[2])
-    print
-finally:
-    if shell and shell.session:
-        shell.session.logout()
+        return "http://%s:%s/databases/%s/items/%s.%s?session-id=%s"%(self.session.connection.hostname, 
+                                                                      self.session.connection.port, 
+								      self.database.id, 
+								      track.id, 
+							              track.type,
+                                        			      track.database.session.sessionid)
+if __name__ == '__main__':
+    def main():
+        shell = Playlist()
+        try:
+            import logging
+            logging.basicConfig(level=logging.DEBUG,
+                format='%(asctime)s %(levelname)s %(message)s')
+            # run the shell
+            shell.do_connect(sys.argv[1])
+            shell.do_playlist(sys.argv[2])
+            print
+        finally:
+            if shell and shell.session:
+                shell.session.logout()
+    main()
